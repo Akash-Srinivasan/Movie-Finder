@@ -41,8 +41,8 @@
                 placeholder="Enter title of desired movie"
                 type="text"
               />
-              <button class="search__submit" onclick="search()">
-                <i class="fa-solid fa-magnifying-glass"></i>              </button>
+              <button class="search__submit" onclick="searchWait()">
+                <i class="fa-solid fa-lg fa-magnifying-glass"></i>              </button>
             </div>
           </div>
         </div>
@@ -55,7 +55,8 @@
           </div>
             <div class="movie__container">
             <div class="movie-list">
-                
+              <i class="fas fa-spinner movie__loading--spinner"></i>
+
             </div>
         </div>
         </div>

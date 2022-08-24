@@ -1,4 +1,5 @@
 async function search() {
+  
   const inp = document.getElementById("search__bar").value;
   const movies = await fetch(`http://www.omdbapi.com/?apikey=7f31329f&s=${inp}
     `);
@@ -6,12 +7,25 @@ async function search() {
   const moviesDataArray = moviesData.Search;
   const moviesList = document.querySelector(".movie-list");
   moviesList.innerHTML = moviesDataArray
-    .map((movie) => movieHTML(movie))
+    .map((movie) =>  movieHTML(movie))
     .join("");
   const res = document.querySelector(".results__text")
   res.innerHTML = `<h2>Search results for <span class="blue">${inp}</span>:</h2>
   `
-  console.log(moviesDataArray);
+  movieWrapper.classList.remove('movie__loading')
+
+}
+
+function searchWait(){
+  const movieWrapper  = document.querySelector(".movie-list")
+  movieWrapper.classList += ' movie__loading'
+  console.log(document.body.classList);
+  new Promise((resolve) => {
+    setTimeout(() => {
+      search()
+    },1000);
+  })
+
 }
 
 function movieHTML(movie) {
@@ -30,4 +44,5 @@ function movieHTML(movie) {
                 </div>
     </div>
     `;
+
 }
